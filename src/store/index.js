@@ -9,7 +9,7 @@ Vue.use(Vuex)
 const state = {
 	userInfo: null,
 	cart: null,
-	products: null		
+	products: []		
 }
 
 export default new Vuex.Store({

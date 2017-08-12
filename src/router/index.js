@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import login from '@/components/login'
 import products from '@/components/products'
+import prodetail from '@/components/prodetail'
 
 Vue.use(Router)
 
@@ -10,13 +11,23 @@ export default new Router({
   	routes: [
     	{
 	      	path: '/',
-	      	name: 'products',
+	      	name: 'index',
 	      	component: products
     	},
     	{
 	      	path: '/login',
 	      	name: 'login',
 	      	component: login
+    	},
+    	{
+	      	path: '/products',
+	      	name: 'products',
+	      	component: products
+    	},
+    	{
+	      	path: '/prodetail/:id',
+	      	name: 'prodetail',
+	      	component: prodetail
     	}
   	]
 })

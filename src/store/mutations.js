@@ -4,8 +4,6 @@ import {
 
 export default {
 	[ADD_PRODUCT](state, { products }) {
-		console.log('******')
-		console.log(state, products)
-		console.log('******')
+		state.products.push(...products) 
 	}
 }
