@@ -47,7 +47,7 @@
 		},
 		methods: {
 			goDetail(id) {
-				alert(id);
+				this.$router.push('/prodetail/'+id)
 			}
 		}
 	}
