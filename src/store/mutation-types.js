@@ -1,7 +1,7 @@
 
 /** 添加查询的商品 */
-export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const ADD_PRODUCT = 'ADD_PRODUCT'
 /** 获取当前商品 */
-export const GET_CUR_PRODUCT = 'GET_CUR_PRODUCT';
-
-/**  */
+export const GET_CUR_PRODUCT = 'GET_CUR_PRODUCT'
+/** 设置用户信息 */
+export const SET_USERINFO = 'SET_USERINFO'
