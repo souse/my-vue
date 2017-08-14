@@ -1,16 +1,16 @@
 <template>
 	<div class="prodetail_container">
 		<div class="img" :style="{width: width, height: height}">
-			<img src="https://m.360buyimg.com/n12/jfs/t6097/98/737020227/254748/b0a8d077/592bf164N7fa83019.jpg!q70.jpg" >
+			<img :src="product.imageurl" >
 		</div>
 		<div class="goods_part">
 			<div class="basic_info">
-				<div class="prod_title">一切都是最好的安排</div>
+				<div class="prod_title">{{product.wname}}</div>
 				<div class="prod_price_wrap">
 					<div class="prod_price">
 						<span class="yang_pic_price">
 							<span class="s_price">价格:</span>
-							￥<span class="big_price">21</span><span class="small_price">.12</span>
+							￥<span class="big_price">{{product.jdPrice.split('\.')[0]}}</span><span class="small_price">.{{product.jdPrice.split('\.')[1]}}</span>
 						</span>
 					</div>
 				</div>
@@ -41,18 +41,23 @@
 		name: 'prodetail',
 		data() {
 			return {
-				product: 1,
 				width: window.innerWidth + 'px',
 				height: window.innerWidth + 'px'
 			}
 		},
+		created() {
+			const { id } = this.$route.params
+
+			this.$store.commit('GET_CUR_PRODUCT', { id })
+		},
 		computed: {
 			...mapState([
-				'products'
+				'products',
+				'product'
 			])
 		},
 		mounted() {
-			console.log(this)
+			//console.log(this.prod())
 		}
 	}
 </script>

@@ -9,6 +9,7 @@ Vue.use(Vuex)
 const state = {
 	userInfo: null,
 	cart: null,
+	product: null,
 	products: []		
 }
 

@@ -4,7 +4,7 @@
  */
 export const getProducts = () => {
 	//setTimeout(() => cb(products), 2000)
-	return fetch(`http://www.reddit.com/r/reactjs.json`)
+	return fetch(`http://management-api.test.chupinxiu.com/h5/user/getProtocol?shopId=1451`)
         .then(response => response.json())
         .then(json => {
         	return products
