@@ -13,8 +13,7 @@
 		<mt-actionsheet :actions="actions" v-model="sheetVisible" cancelText=""></mt-actionsheet>
 		<mt-datetime-picker 
 			ref="picker" 
-			type="date" 
-			:value.sync="pickerValue"
+			type="date"
 			year-format="{value} 年"
 			month-format="{value} 月"
 			date-format="{value} 日"
@@ -27,6 +26,7 @@
 <script>
 	import Vue from 'vue'
 	import { Picker, Actionsheet, DatetimePicker } from 'mint-ui'
+	import { getDate } from '@/utils'
 
 	Vue.component(Picker.name, Picker)
 	Vue.component(Actionsheet.name, Actionsheet)
@@ -71,8 +71,8 @@
 			open(picker) {
 				this.$refs[picker].open();
 			},
-			changeDate(val) {
-				console.log(new Date(val))
+			changeDate(date) {
+				this.user.birthday = getDate(date)
 			},
 			submit() {
 
