@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 const state = {
 	userInfo: null,
-	cart: null,
+	cart: {},
 	product: null,
 	products: []		
 }

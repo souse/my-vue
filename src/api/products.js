@@ -1,5 +1,5 @@
 /**
- * 获取假数据
+ * 获取商品数据
  * @return {[type]} [description]
  */
 export const getProducts = () => {
@@ -9,6 +9,14 @@ export const getProducts = () => {
         .then(json => {
         	return products
         })	
+}
+
+export const buyProducts = (prods=[]) => {
+	return new Promise((resolve) => {
+		setTimeout(()=>{
+			resolve({ status: 0, msg: '', data: {} })
+		}, 2000)
+	})
 }
 
 const products = [{

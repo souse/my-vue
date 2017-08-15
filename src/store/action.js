@@ -3,7 +3,7 @@ import {
 	ADD_PRODUCT
 } from './mutation-types'
 import { registerInfo } from '@/api/user'
-import { getProducts } from '@/api/products'
+import { getProducts, buyProducts } from '@/api/products'
 
 export default {
 	async registerInfo({ commit, state }, user) {
@@ -23,5 +23,11 @@ export default {
 		const products = await getProducts();
 			
 		commit(ADD_PRODUCT, { products })
+	},
+	async buyProducts({ commit, state }, prods=[]) {
+		const { userInfo } = state
+		const res = await buyProducts(userInfo.uid, prods)
+
+		return res
 	}
 }

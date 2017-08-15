@@ -1,9 +1,12 @@
 import {
 	ADD_PRODUCT,
 	GET_CUR_PRODUCT,
-	SET_USERINFO
+	SET_USERINFO,
+	ADD_TO_CART,
+	REMOVE_CART,
+	CLEAR_CART
 } from './mutation-types'
-import { setStore } from '@/utils'
+import { setStore, getStore } from '@/utils'
 
 export default {
 	[ADD_PRODUCT](state, { products }) {
@@ -11,7 +14,8 @@ export default {
 		setStore('products', state.products)
 	},
 	[GET_CUR_PRODUCT](state, { id }) {
-		const products = state.products
+		const ps = state.products
+		const products = ps.length > 0 ? ps : getStore('products')
 		let product
 		
 		for (let i = 0; i < products.length; i++) {
@@ -26,5 +30,47 @@ export default {
 	},
 	[SET_USERINFO](state, { userinfo }) {
 		state.userInfo = userinfo
+	},
+	[ADD_TO_CART](state, { product }) {
+		//DEMO中假定书都出自一家店
+		const { wareId } = product
+		let cart = state.cart
+		let prd = cart[wareId] = (cart[wareId] || {})
+
+		if (prd) {
+			prd['num']++
+		} else {
+			prd = { num: 1, ...product }
+		}
+
+		state.cart = { ...cart }
+		setStore('cart', state.cart)
+	},
+	[REMOVE_CART](state, { wareId }) {
+		let cart  = state.cart
+		let prd = cart[wareId]
+
+		if (prd) {
+			if (prd['num'] > 1) {
+				prd['num']--
+				state.cart = { ...cart }
+			} else {
+				delete cart[wareId]
+				state.cart = { ...cart } 
+			}	
+		}
+		setStore('cart', state.cart)
+	},
+	[CLEAR_CART](state) {
+		state.cart = {  }
+		setStore('cart', {})
 	}
 }
+
+
+
+
+
+
+
+

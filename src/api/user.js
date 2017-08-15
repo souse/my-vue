@@ -1,4 +1,5 @@
 const userInfo = {
+	uid: '23232323',
 	username: '张三',
 	sex: '男',
 	mobile: 13821171724,

@@ -35,7 +35,7 @@
 	</div>
 </template>
 <script>
-	import { mapState } from 'vuex'
+	import { mapState, mapMutations } from 'vuex'
 
 	export default {
 		name: 'prodetail',
@@ -57,7 +57,7 @@
 			])
 		},
 		mounted() {
-			//console.log(this.prod())
+			
 		}
 	}
 </script>
