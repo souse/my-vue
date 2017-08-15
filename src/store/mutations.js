@@ -35,12 +35,13 @@ export default {
 		//DEMO中假定书都出自一家店
 		const { wareId } = product
 		let cart = state.cart
-		let prd = cart[wareId] = (cart[wareId] || {})
+		let prd = cart[wareId] || {}
 
-		if (prd) {
-			prd['num']++
+		if (prd['wareId']) {
+			cart[wareId]['num']++
 		} else {
 			prd = { num: 1, ...product }
+			cart[wareId] = prd
 		}
 
 		state.cart = { ...cart }

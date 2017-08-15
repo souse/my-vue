@@ -20,15 +20,15 @@
 		<div class="cart_container">
 			<div class="concern_cart">
 				<a href="javascript:;" class="love_heart_icn">.</a>
-				<a href="javascript:;" class="cart_car_icn">
+				<a href="javascript:;" class="cart_car_icn" @click="goCart">
 					<em class="btm_act_icn">
-						<i class="order_numbers"></i>
+						<i class="order_numbers">{{Object.keys(cart).length}}</i>
 					</em>	
 					<span class="gou">购物车</span>
 				</a>
 			</div>
 			<div class="action_list">
-				<a href="javascript:;" class="add_cart">加入购物车</a>	
+				<a href="javascript:;" class="add_cart" @click="addCart">加入购物车</a>	
 				<a href="javascript:;" class="directorder">立即购买</a>
 			</div>	
 		</div>
@@ -53,11 +53,22 @@
 		computed: {
 			...mapState([
 				'products',
-				'product'
+				'product',
+				'cart'
 			])
 		},
-		mounted() {
-			
+		methods: {
+			...mapMutations({
+				addToCart: 'ADD_TO_CART'
+			}),
+			addCart() {
+				const product = this.product
+
+				this.addToCart({ product })
+			},
+			goCart() {
+				this.$router.push('/cart')
+			}
 		}
 	}
 </script>
