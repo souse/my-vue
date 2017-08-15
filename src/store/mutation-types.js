@@ -13,3 +13,5 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const REMOVE_CART = 'REMOVE_CART'
 /** 清空购物车 */
 export const CLEAR_CART = 'CLEAR_CART'
+/** 设置购物车商品数量 */
+export const SET_CART_PRODUCT_NUM = 'SET_CART_PRODUCT_NUM'

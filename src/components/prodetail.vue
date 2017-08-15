@@ -22,20 +22,20 @@
 				<a href="javascript:;" class="love_heart_icn">.</a>
 				<a href="javascript:;" class="cart_car_icn" @click="goCart">
 					<em class="btm_act_icn">
-						<i class="order_numbers">{{Object.keys(cart).length}}</i>
+						<i class="order_numbers">{{Object.keys(carts).length}}</i>
 					</em>	
 					<span class="gou">购物车</span>
 				</a>
 			</div>
 			<div class="action_list">
 				<a href="javascript:;" class="add_cart" @click="addCart">加入购物车</a>	
-				<a href="javascript:;" class="directorder">立即购买</a>
+				<a href="javascript:;" class="directorder" @click="buyNow">立即购买</a>
 			</div>	
 		</div>
 	</div>
 </template>
 <script>
-	import { mapState, mapMutations } from 'vuex'
+	import { mapGetters,mapState, mapMutations } from 'vuex'
 
 	export default {
 		name: 'prodetail',
@@ -53,8 +53,10 @@
 		computed: {
 			...mapState([
 				'products',
-				'product',
-				'cart'
+				'product'
+			]),
+			...mapGetters([
+				'carts'
 			])
 		},
 		methods: {
@@ -65,6 +67,10 @@
 				const product = this.product
 
 				this.addToCart({ product })
+			},
+			buyNow() {
+				this.addCart()
+				this.goCart()	
 			},
 			goCart() {
 				this.$router.push('/cart')

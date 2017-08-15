@@ -4,7 +4,8 @@ import {
 	SET_USERINFO,
 	ADD_TO_CART,
 	REMOVE_CART,
-	CLEAR_CART
+	CLEAR_CART,
+	SET_CART_PRODUCT_NUM
 } from './mutation-types'
 import { setStore, getStore } from '@/utils'
 
@@ -34,7 +35,7 @@ export default {
 	[ADD_TO_CART](state, { product }) {
 		//DEMO中假定书都出自一家店
 		const { wareId } = product
-		let cart = state.cart
+		let cart  = Object.keys(state.cart).length == 0 ? getStore('cart') : state.cart
 		let prd = cart[wareId] || {}
 
 		if (prd['wareId']) {
@@ -48,7 +49,7 @@ export default {
 		setStore('cart', state.cart)
 	},
 	[REMOVE_CART](state, { wareId }) {
-		let cart  = state.cart
+		let cart  = Object.keys(state.cart).length == 0 ? getStore('cart') : state.cart
 		let prd = cart[wareId]
 
 		if (prd) {
@@ -65,6 +66,14 @@ export default {
 	[CLEAR_CART](state) {
 		state.cart = {  }
 		setStore('cart', {})
+	},
+	[SET_CART_PRODUCT_NUM](state, { num, wareId }) {
+		let cart  = Object.keys(state.cart).length == 0 ? getStore('cart') : state.cart
+		
+		let prd = cart[wareId]
+		prd['num'] = num
+		state.cart = { ...cart }
+		setStore('cart', state.cart)
 	}
 }
 
