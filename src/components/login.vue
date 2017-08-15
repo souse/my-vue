@@ -12,8 +12,8 @@
 
 <script>
 	import Vue from 'vue'
-	import { Field, Button } from 'mint-ui'
-	import { loginInfo } from '../api/login'
+	import { Field, Button, Indicator } from 'mint-ui'
+	import { loginInfo } from '../api/user'
 	import { setStore } from '@/utils'
 
 	Vue.component(Field.name, Field)
@@ -30,13 +30,16 @@
 	  	computed: {},
 	  	methods: {
 	  		async submit() {
-	  			this.userinfo = await loginInfo(this.username, this.password)
+	  			let userinfo
 
-	  			if (this.userinfo != null) {
-	  				const user = this.userinfo
+	  			Indicator.open()
+	  			userinfo = await loginInfo(this.username, this.password)
 
-	  				this.$store.commit('SET_USERINFO', { user })
-	  				setStore('userInfo', user)
+	  			console.log('login...userinfo...', userinfo)
+	  			Indicator.close()
+	  			if (userinfo != null) {
+	  				this.$store.commit('SET_USERINFO', { userinfo })
+	  				setStore('userInfo', userinfo)
 	  				this.$router.push('/products')
 	  			}
 	  		}
