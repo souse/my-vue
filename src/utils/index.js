@@ -14,7 +14,9 @@ export const setStore = (name, content) => {
  */
 export const getStore = name => {
 	if (!name) return;
-	return JSON.parse(window.localStorage.getItem(name));
+	let obj = JSON.parse(window.localStorage.getItem(name));
+
+	return obj == null ? {} : obj;
 }
 
 /**
