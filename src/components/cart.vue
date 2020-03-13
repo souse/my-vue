@@ -94,7 +94,8 @@
 				this.addToCart({ product })
 			},
 			buy() {
-				Toast('准备接入Node后台，开始做结算相关逻辑，暂时结束..');	
+				// Toast('准备接入Node后台，开始做结算相关逻辑，暂时结束..');	
+				this.$router.push('/login');
 			}
 		}
 	}

@@ -6,6 +6,9 @@
 				<mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
 			</div>	
 			<mt-button type="primary" @click.stop="submit">登录</mt-button>
+			<div class="footer">
+				<a href="javascript:;" @click="register">注册</a>
+			</div>
 		</div>	
 	</div>
 </template>
@@ -42,6 +45,9 @@
 	  				setStore('userInfo', userinfo)
 	  				this.$router.push('/products')
 	  			}
+	  		},
+	  		register() {
+	  			this.$router.push('/register');
 	  		}
 	  	}
 	}
@@ -55,5 +61,12 @@
 	.login_box button {
 		width: 100%;
 		margin-top: 20px;
+	}
+	.footer {
+		text-align: right;
+		margin-top: 10px;
+	}
+	.footer a {
+		color: #777;
 	}
 </style>

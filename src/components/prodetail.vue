@@ -65,6 +65,10 @@
 			}),
 			addCart() {
 				const product = this.product
+				const { wareId } = product
+				if (this.carts[wareId]) {
+					this.$router.push('/cart');
+				}
 
 				this.addToCart({ product })
 			},
