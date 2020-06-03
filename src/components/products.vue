@@ -13,7 +13,7 @@
 							</div>
 							<span class="book_author">{{p.author}}</span>
 						</div>
-						<div class="gray_icon"></div>			
+						<div class="gray_icon"></div>
 						<div class="product_price_m">
 							<em>
 								￥<span class="big_price">{{p.jdPrice.split('\.')[0]}}</span><span>.{{p.jdPrice.split('\.')[1]}}</span>
@@ -26,7 +26,7 @@
 							<span class="book_shop_name"></span>
 						</div>
 					</div>
-				</a>	
+				</a>
 			</li>
 		</ul>
 	</div>
@@ -39,41 +39,41 @@
 	  	name: 'products',
 	  	created () {
 		    this.$store.dispatch('getProductsInfo')
-		},
-		computed: {
-			...mapState([
-				'products'
-			])
-		},
-		methods: {
-			goDetail(id) {
-				this.$router.push('/prodetail/'+id)
-			}
-		}
+	  },
+	  computed: {
+	    ...mapState([
+	      'products'
+	    ])
+	  },
+	  methods: {
+	    goDetail (id) {
+	      this.$router.push('/prodetail/' + id)
+	    }
+	  }
 	}
 </script>
 <style>
 	li {
 		list-style: none outside none;
-	}	
+	}
 	li.normal_list {
 		height: 120px;
 		position: relative;
 	}
 	.normal_list a {
-		display: -webkit-box;
-	    display: box;
+    display: flex;
 	    height: 100%;
 	    padding-top: 10px;
-	    font-size: 0px;	
+	    font-size: 0px;
 	}
 	.normal_list a .pro_img {
+    flex-shrink: 0;
 		position: relative;
 	    height: 100px;
 	    width: 100px;
 	    margin-left: 10px;
 	    overflow: hidden;
-	    text-align: center;	
+	    text-align: center;
 	}
 	.normal_list .pro_img img {
 		display: inline-block;
@@ -82,24 +82,24 @@
 	    height: 100px;
 	}
 	.normal_list .product_info_box{
-		-webkit-box-flex: 1;
-	    box-flex: 1;
+      flex: 1;
+      min-width: 0;
 	    margin-left: 10px;
 	    position: relative;
 	    height: 100%;
 	    margin-top: -2px;
-	    padding-right: 10px;	
+	    padding-right: 10px;
 	}
 	.product_info_box .product_book_name {
 		color: #232326;
 	    font-size: 15px;
 	    line-height: 22px;
-	    height: 40px;	
+	    height: 40px;
 	}
 	.product_info_box .book_name {
 		overflow: hidden;
 	    white-space: nowrap;
-	    text-overflow: ellipsis;	
+	    text-overflow: ellipsis;
 	}
 	.product_info_box .book_author {
 		display: block;
@@ -108,7 +108,7 @@
 	    text-overflow: ellipsis;
 	    font-size: 12px;
 	    color: #848689;
-	    margin-top: 0px;	
+	    margin-top: 0px;
 	}
 	.product_info_box .gray_icon{
 		height: 25px;
@@ -150,7 +150,7 @@
 	}
 	.gray_pro_info span {
 		margin-right: 8px;
-    	display: block;	
+    	display: block;
 	}
 	.gray_pro_info .self_sell {
 		color: #f23030;
@@ -187,22 +187,10 @@
 	    -webkit-box-flex: 1;
 	    box-flex: 1;
 	    min-width: 26px;
-	    text-align: right;	
+	    text-align: right;
 	}
 	.gray_pro_info span:last-child{
 		margin-right: 0;
-	}	
+	}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
 
